@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper {
+  background-color: #f0f0f0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.boxContent {
+  width: 700px;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px 40px 200px 40px;
+  padding: 40px;
+  flex-direction: column;
+}
+.boxContent__enterData {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  height: 120px;
+  gap: 20px;
+}
+.boxContent__enterData_day, .boxContent__enterData_month, .boxContent__enterData_year {
+  height: 120px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+.boxContent__enterData_day_error, .boxContent__enterData_month_error, .boxContent__enterData_year_error {
+  color: red;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+.boxContent__enterData_day_correct, .boxContent__enterData_month_correct, .boxContent__enterData_year_correct {
+  color: silver;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+.boxContent__enterData_day_inputCorrect, .boxContent__enterData_day_inputError, .boxContent__enterData_month_inputCorrect, .boxContent__enterData_month_inputError, .boxContent__enterData_year_inputCorrect, .boxContent__enterData_year_inputError {
+  border: 1px solid silver;
+  border-radius: 5px;
+  outline: none;
+  height: 50px;
+  font-size: 30px;
+  padding: 0px 20px;
+  color: black;
+  font-weight: bold;
+}
+.boxContent__enterData_day_inputCorrect::-moz-placeholder, .boxContent__enterData_day_inputError::-moz-placeholder, .boxContent__enterData_month_inputCorrect::-moz-placeholder, .boxContent__enterData_month_inputError::-moz-placeholder, .boxContent__enterData_year_inputCorrect::-moz-placeholder, .boxContent__enterData_year_inputError::-moz-placeholder {
+  color: #898989;
+}
+.boxContent__enterData_day_inputCorrect::placeholder, .boxContent__enterData_day_inputError::placeholder, .boxContent__enterData_month_inputCorrect::placeholder, .boxContent__enterData_month_inputError::placeholder, .boxContent__enterData_year_inputCorrect::placeholder, .boxContent__enterData_year_inputError::placeholder {
+  color: #898989;
+}
+.boxContent__enterData_day_inputError, .boxContent__enterData_month_inputError, .boxContent__enterData_year_inputError {
+  border: 1px solid red;
+}
+.boxContent__enterData_day p:nth-child(3), .boxContent__enterData_month p:nth-child(3), .boxContent__enterData_year p:nth-child(3) {
+  color: red;
+  font-style: italic;
+  font-size: 14px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.showData {
+  width: 100%;
+}
+.showData__years, .showData__months, .showData__days {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  height: 80px;
+}
+.showData__years p:nth-child(1), .showData__months p:nth-child(1), .showData__days p:nth-child(1) {
+  color: #844dff;
+  font-weight: bold;
+  font-size: 80px;
+  height: 40px;
+}
+.showData__years p:nth-child(2), .showData__months p:nth-child(2), .showData__days p:nth-child(2) {
+  color: black;
+  font-weight: bold;
+  font-size: 80px;
+  height: 40px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  width: 100%;
+}
+.line__lineBlock {
+  width: 85%;
+  height: 1px;
+  border: 1px solid rgba(231, 231, 231, 0.684);
+}
+.line__button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.1s;
+}
+.line__button:hover {
+  transform: scale(1.1);
+  transition: all 0.1s;
+  background-color: #844dff;
+}
+.line__button:active {
+  transform: scale(0.95);
+  transition: all 0.1s;
+  background-color: #844dff;
+}
+.line__button img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .boxContent {
+    width: 98%;
+    margin: 0px 10px;
   }
-  to {
-    transform: rotate(360deg);
+  .boxContent__enterData_day, .boxContent__enterData_month, .boxContent__enterData_year {
+    width: 30%;
+    font-size: 20px;
+  }
+  .boxContent__enterData_day_inputCorrect, .boxContent__enterData_day_inputError, .boxContent__enterData_month_inputCorrect, .boxContent__enterData_month_inputError, .boxContent__enterData_year_inputCorrect, .boxContent__enterData_year_inputError {
+    font-size: 25px;
+    padding: 0px 10px;
+  }
+  .line__lineBlock {
+    width: 90%;
+  }
+  .showData__years, .showData__months, .showData__days {
+    height: 50px;
+  }
+  .showData__years p:nth-child(1), .showData__months p:nth-child(1), .showData__days p:nth-child(1) {
+    font-size: 55px;
+  }
+  .showData__years p:nth-child(2), .showData__months p:nth-child(2), .showData__days p:nth-child(2) {
+    font-size: 55px;
   }
 }
+@media (max-width: 425px) {
+  .boxContent__enterData_day, .boxContent__enterData_month, .boxContent__enterData_year {
+    width: 30%;
+    font-size: 15px;
+  }
+  .showData__years, .showData__months, .showData__days {
+    height: 50px;
+  }
+  .showData__years p:nth-child(1), .showData__months p:nth-child(1), .showData__days p:nth-child(1) {
+    font-size: 40px;
+  }
+  .showData__years p:nth-child(2), .showData__months p:nth-child(2), .showData__days p:nth-child(2) {
+    font-size: 40px;
+  }
+}/*# sourceMappingURL=App.css.map */

@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: space-around;
   border-radius: 40px 40px 200px 40px;
   padding: 40px;
   flex-direction: column;
@@ -81,18 +82,19 @@
   display: flex;
   align-items: start;
   gap: 10px;
-  height: 80px;
+  height: 70px;
+  margin-bottom: 10px;
 }
 .showData__years p:nth-child(1), .showData__months p:nth-child(1), .showData__days p:nth-child(1) {
   color: #844dff;
   font-weight: bold;
-  font-size: 80px;
-  height: 40px;
+  font-size: 70px;
+  height: 80px;
 }
 .showData__years p:nth-child(2), .showData__months p:nth-child(2), .showData__days p:nth-child(2) {
   color: black;
   font-weight: bold;
-  font-size: 80px;
+  font-size: 70px;
   height: 40px;
 }
 
@@ -115,8 +117,8 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid rgba(231, 231, 231, 0.684);
 }
 .line__button {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: black;
   cursor: pointer;
@@ -152,8 +154,13 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 25px;
     padding: 0px 10px;
   }
+  .boxContent p:nth-child(3) {
+    color: red;
+    font-style: italic;
+    font-size: 14px;
+  }
   .line__lineBlock {
-    width: 90%;
+    width: 83%;
   }
   .showData__years, .showData__months, .showData__days {
     height: 50px;
@@ -165,10 +172,31 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 55px;
   }
 }
+@media (max-width: 550px) {
+  .boxContent p:nth-child(3) {
+    color: red;
+    font-style: italic;
+    font-size: 10px;
+  }
+}
 @media (max-width: 425px) {
+  .boxContent__enterData {
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
   .boxContent__enterData_day, .boxContent__enterData_month, .boxContent__enterData_year {
     width: 30%;
-    font-size: 15px;
+    font-size: 12px;
+  }
+  .boxContent__enterData_day_inputCorrect, .boxContent__enterData_day_inputError, .boxContent__enterData_month_inputCorrect, .boxContent__enterData_month_inputError, .boxContent__enterData_year_inputCorrect, .boxContent__enterData_year_inputError {
+    font-size: 20px;
+    padding: 0px 10px;
+  }
+  .boxContent p:nth-child(3) {
+    color: red;
+    font-style: italic;
+    font-size: 12px;
   }
   .showData__years, .showData__months, .showData__days {
     height: 50px;
@@ -178,5 +206,24 @@ input[type=number]::-webkit-outer-spin-button {
   }
   .showData__years p:nth-child(2), .showData__months p:nth-child(2), .showData__days p:nth-child(2) {
     font-size: 40px;
+  }
+  .line {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  .line__lineBlock {
+    width: 100%;
+  }
+  .line__button {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+  }
+  .line__button img {
+    width: 25px;
+    height: 25px;
   }
 }/*# sourceMappingURL=App.css.map */

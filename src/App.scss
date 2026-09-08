@@ -33,6 +33,7 @@
   height: 500px;
   background-color: white;
   @include flex-center;
+  justify-content: space-around;
   border-radius: 40px 40px 200px 40px;
   padding: 40px;
   flex-direction: column;
@@ -92,17 +93,18 @@
     display: flex;
     align-items: start;
     gap: 10px;
-    height: 80px;
+    height: 70px;
+    margin-bottom: 10px;
     p:nth-child(1){
       color: #844dff;
       font-weight: bold;
-      font-size: 80px;
-      height: 40px;
+      font-size: 70px;
+      height: 80px;
     }
     p:nth-child(2){
       color: black;
       font-weight: bold;
-      font-size: 80px;
+      font-size: 70px;
       height: 40px;
     }
   }
@@ -124,8 +126,8 @@ input[type="number"]::-webkit-outer-spin-button {
     border: 1px solid rgba(231, 231, 231, 0.684);
   }
   &__button{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: black;
     cursor: pointer;
@@ -166,14 +168,19 @@ input[type="number"]::-webkit-outer-spin-button {
         }
       }
     }
+    p:nth-child(3){
+      @include errorSecondString;
+      font-size: 14px;
+    }
   }
+
   .line{
       &__lineBlock{
-        width: 90%;
+        width: 83%;
       }
-    }
+  }
 
-    .showData{
+  .showData{
       &__years,
       &__months,
       &__days{
@@ -185,17 +192,40 @@ input[type="number"]::-webkit-outer-spin-button {
           font-size: 55px;
         }
       }
+  }  
+}
+
+@media(max-width:550px){
+  .boxContent{
+    p:nth-child(3){
+      @include errorSecondString;
+      font-size: 10px;
     }
+  }
 }
 
 @media(max-width:425px){
   .boxContent{
     &__enterData{
+      gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 20px;
       &_day,
       &_month,
       &_year{
         width: 30%;
-        font-size: 15px;}}
+        font-size: 12px;
+        &_inputCorrect,
+        &_inputError{
+          font-size: 20px;
+          padding: 0px 10px;
+        }
+      }
+    }
+    p:nth-child(3){
+        @include errorSecondString;
+        font-size: 12px;
+      }
   }
   .showData{
       &__years,
@@ -209,5 +239,25 @@ input[type="number"]::-webkit-outer-spin-button {
           font-size: 40px;
         }
       }
+    }
+
+    .line{
+      position: relative;
+      margin-bottom: 30px;
+      &__lineBlock{
+        width: 100%;
+      }
+      &__button{
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, -50%);
+          width: 50px;
+          height: 50px;
+          img{
+            width: 25px;
+            height: 25px;
+          }
+        }
     }
 }

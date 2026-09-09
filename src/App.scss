@@ -46,7 +46,7 @@
     &_day,
     &_month,
     &_year{
-      height: 120px;
+      height: 100px;
       gap: 10px;
       display: flex;
       flex-direction: column;
@@ -82,6 +82,18 @@
       }
     }
   }
+  &__error{
+    color: red;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p{
+      text-align: center;
+      height: 20px;
+    }
+  }
 }
 
 .showData{
@@ -95,8 +107,14 @@
     gap: 10px;
     height: 70px;
     margin-bottom: 10px;
-    p:nth-child(1){
+    &_default{
       color: #844dff;
+      font-weight: bold;
+      font-size: 70px;
+      height: 80px;
+    }
+    &_error{
+      color: rgb(255, 99, 99);
       font-weight: bold;
       font-size: 70px;
       height: 80px;
@@ -116,6 +134,8 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+
+
 .line{
   @include flex-center;
   justify-content: start;
@@ -125,7 +145,7 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 1px;
     border: 1px solid rgba(231, 231, 231, 0.684);
   }
-  &__button{
+  &__buttonCorrect{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -143,6 +163,30 @@ input[type="number"]::-webkit-outer-spin-button {
       transform: scale(0.95);
       transition: all 0.1s;
       background-color: #844dff;
+    }
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &__buttonIncorrect{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(255, 64, 64);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.1s;
+    &:hover{
+      transform: translate(-50%, -50%), scale(1.1);
+      transition: all 0.1s;
+      background-color: rgb(255, 99, 99);
+    }
+    &:active{
+      transform: translate(-50%, -50%), scale(0.95);
+      transition: all 0.1s;
+      background-color: rgb(255, 99, 99);
     }
     img{
       width: 30px;
@@ -167,6 +211,9 @@ input[type="number"]::-webkit-outer-spin-button {
           padding: 0px 10px;
         }
       }
+    }
+    &__error{
+      margin-top: -20px;
     }
     p:nth-child(3){
       @include errorSecondString;
@@ -209,7 +256,7 @@ input[type="number"]::-webkit-outer-spin-button {
     &__enterData{
       gap: 10px;
       justify-content: space-between;
-      margin-bottom: 20px;
+      height: 80px;
       &_day,
       &_month,
       &_year{
@@ -226,6 +273,9 @@ input[type="number"]::-webkit-outer-spin-button {
         @include errorSecondString;
         font-size: 12px;
       }
+    &__error{
+      margin-bottom: 20px;
+    }
   }
   .showData{
       &__years,
@@ -247,17 +297,29 @@ input[type="number"]::-webkit-outer-spin-button {
       &__lineBlock{
         width: 100%;
       }
-      &__button{
-          position: absolute;
-          left: 50%;
-          top: 0;
-          transform: translate(-50%, -50%);
-          width: 50px;
-          height: 50px;
-          img{
-            width: 25px;
-            height: 25px;
-          }
+      &__buttonCorrect{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        img{
+          width: 25px;
+          height: 25px;
         }
+      }
+      &__buttonIncorrect{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        img{
+          width: 25px;
+          height: 25px;
+        }
+      }
     }
 }

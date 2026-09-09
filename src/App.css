@@ -33,7 +33,7 @@
   gap: 20px;
 }
 .boxContent__enterData_day, .boxContent__enterData_month, .boxContent__enterData_year {
-  height: 120px;
+  height: 100px;
   gap: 10px;
   display: flex;
   flex-direction: column;
@@ -73,6 +73,18 @@
   font-style: italic;
   font-size: 14px;
 }
+.boxContent__error {
+  color: red;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.boxContent__error p {
+  text-align: center;
+  height: 20px;
+}
 
 .showData {
   width: 100%;
@@ -85,8 +97,14 @@
   height: 70px;
   margin-bottom: 10px;
 }
-.showData__years p:nth-child(1), .showData__months p:nth-child(1), .showData__days p:nth-child(1) {
+.showData__years_default, .showData__months_default, .showData__days_default {
   color: #844dff;
+  font-weight: bold;
+  font-size: 70px;
+  height: 80px;
+}
+.showData__years_error, .showData__months_error, .showData__days_error {
+  color: rgb(255, 99, 99);
   font-weight: bold;
   font-size: 70px;
   height: 80px;
@@ -116,7 +134,7 @@ input[type=number]::-webkit-outer-spin-button {
   height: 1px;
   border: 1px solid rgba(231, 231, 231, 0.684);
 }
-.line__button {
+.line__buttonCorrect {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -126,17 +144,41 @@ input[type=number]::-webkit-outer-spin-button {
   outline: none;
   transition: all 0.1s;
 }
-.line__button:hover {
+.line__buttonCorrect:hover {
   transform: scale(1.1);
   transition: all 0.1s;
   background-color: #844dff;
 }
-.line__button:active {
+.line__buttonCorrect:active {
   transform: scale(0.95);
   transition: all 0.1s;
   background-color: #844dff;
 }
-.line__button img {
+.line__buttonCorrect img {
+  width: 30px;
+  height: 30px;
+}
+.line__buttonIncorrect {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgb(255, 64, 64);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.1s;
+}
+.line__buttonIncorrect:hover {
+  transform: translate(-50%, -50%), scale(1.1);
+  transition: all 0.1s;
+  background-color: rgb(255, 99, 99);
+}
+.line__buttonIncorrect:active {
+  transform: translate(-50%, -50%), scale(0.95);
+  transition: all 0.1s;
+  background-color: rgb(255, 99, 99);
+}
+.line__buttonIncorrect img {
   width: 30px;
   height: 30px;
 }
@@ -153,6 +195,9 @@ input[type=number]::-webkit-outer-spin-button {
   .boxContent__enterData_day_inputCorrect, .boxContent__enterData_day_inputError, .boxContent__enterData_month_inputCorrect, .boxContent__enterData_month_inputError, .boxContent__enterData_year_inputCorrect, .boxContent__enterData_year_inputError {
     font-size: 25px;
     padding: 0px 10px;
+  }
+  .boxContent__error {
+    margin-top: -20px;
   }
   .boxContent p:nth-child(3) {
     color: red;
@@ -183,7 +228,7 @@ input[type=number]::-webkit-outer-spin-button {
   .boxContent__enterData {
     gap: 10px;
     justify-content: space-between;
-    margin-bottom: 20px;
+    height: 80px;
   }
   .boxContent__enterData_day, .boxContent__enterData_month, .boxContent__enterData_year {
     width: 30%;
@@ -197,6 +242,9 @@ input[type=number]::-webkit-outer-spin-button {
     color: red;
     font-style: italic;
     font-size: 12px;
+  }
+  .boxContent__error {
+    margin-bottom: 20px;
   }
   .showData__years, .showData__months, .showData__days {
     height: 50px;
@@ -214,7 +262,7 @@ input[type=number]::-webkit-outer-spin-button {
   .line__lineBlock {
     width: 100%;
   }
-  .line__button {
+  .line__buttonCorrect {
     position: absolute;
     left: 50%;
     top: 0;
@@ -222,7 +270,19 @@ input[type=number]::-webkit-outer-spin-button {
     width: 50px;
     height: 50px;
   }
-  .line__button img {
+  .line__buttonCorrect img {
+    width: 25px;
+    height: 25px;
+  }
+  .line__buttonIncorrect {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+  }
+  .line__buttonIncorrect img {
     width: 25px;
     height: 25px;
   }

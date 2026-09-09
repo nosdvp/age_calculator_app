@@ -13,17 +13,19 @@ function App() {
   const [inputYear, setInputYear] = useState('')
   const [confirmYear, setConfirmYear] = useState('')
 
+  const [buttonStyle, setButtonStyle] = useState('line__buttonCorrect')
+
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const [stateForLineYearly, setStateForLineYearly] = useState('showData__years_default')
+  const [stateForLineMonth, setStateForLineMonth] = useState('showData__months_default')
+  const [stateForLineDay, setStateForLineDay] = useState('showData__days_default')
+
   const date = new Date
 
-  const getDate = date.getDate(); //день
-  const getMonth = date.getMonth() //месяц
-  const getYear = date.getFullYear() //
-
-  const calcDate = () => {
-    setconfirmDay(inputDay)
-    setConfirmMonth(inputMonth)
-    setConfirmYear(inputYear)
-  } 
+  const getDate = date.getDate(); 
+  const getMonth = date.getMonth() + 1;
+  const getYear = date.getFullYear();
 
   let countDayInMonth
 
@@ -38,6 +40,39 @@ function App() {
     countDayInMonth = 30
   }else{
     countDayInMonth = 31
+  }
+
+  const calcDate = () => {
+
+    if(Number(inputDay) === getDate){
+      setconfirmDay(0)
+    }else if(Number(inputDay) < getDate){
+      setconfirmDay(getDate - Number(inputDay))
+    }else{
+      setconfirmDay(countDayInMonth - (Number(inputDay) - getDate))
+    }
+
+    if(Number(inputMonth) === getMonth && Number(inputDay) === getDate){
+      setConfirmMonth(0)
+    }else if(Number(inputMonth) === getMonth){
+      setConfirmMonth(0)
+    }else if(Number(inputMonth) < getMonth && Number(inputDay) <= getDate){
+      setConfirmMonth(getMonth - inputMonth)
+    }else if(Number(inputMonth) < getMonth && Number(inputDay) > getDate){
+      setConfirmMonth(getMonth - inputMonth - 1)
+    }else if(Number(inputMonth) > getMonth && Number(inputDay) <= getDate){
+      setConfirmMonth(12 - (Number(inputMonth) - getMonth))
+    }else{
+      setConfirmMonth(12 - (Number(inputMonth) - getMonth) - 1)
+    }
+
+    if(Number(inputMonth) > getMonth ||
+      (Number(inputMonth) === getMonth && Number(inputDay) > getDate)
+    ){
+      setConfirmYear(getYear - Number(inputYear) - 1)
+    }else{
+      setConfirmYear(getYear - Number(inputYear))
+    }
   }
 
   return (
@@ -81,26 +116,45 @@ function App() {
           </div>
         </section>
 
+        <section className='boxContent__error'>
+          <p>{errorMessage}</p>
+        </section>
+
         <section className='line'>
           <div className='line__lineBlock'></div>
-          <button className='line__button' onClick={calcDate}>
+          <button className={buttonStyle} onClick={() => {
+            if (inputDay === '' || inputMonth === '' || inputYear === '') {
+              setButtonStyle('line__buttonIncorrect')
+              setErrorMessage('Please text you date of birdth')
+              setStateForLineYearly('showData__years_error')
+              setStateForLineMonth('showData__months_error')
+              setStateForLineDay('showData__days_error')
+            } else {
+              setButtonStyle('line__buttonCorrect')
+              calcDate()
+              setErrorMessage('')
+              setStateForLineYearly('showData__years_default')
+              setStateForLineMonth('showData__months_default')
+              setStateForLineDay('showData__days_default')
+            }
+            }}>
             <img src={img}/>
           </button>
         </section>
 
         <section className='showData'>
           <div className='showData__years'>
-            {confirmYear === '' ? <p>--</p> : <p>{confirmYear}</p>}
+            {confirmYear === '' ? <p className={stateForLineYearly}>--</p> : <p className='showData__years_default'>{confirmYear}</p>}
             <p>years</p>
           </div>
 
           <div className='showData__months'>
-            {confirmMonth === '' ? <p>--</p> : <p>{confirmMonth}</p>}
+            {confirmMonth === '' ? <p className={stateForLineMonth}>--</p> : <p className='showData__months_default'>{confirmMonth}</p>}
             <p>months</p>
           </div>
 
           <div className='showData__days'>
-            {confirmDay === '' ? <p>--</p> : <p>{confirmDay}</p>}
+            {confirmDay === '' ? <p className={stateForLineDay}>--</p> : <p className='showData__days_default'>{confirmDay}</p>}
             <p>days</p>
           </div>
         </section>
